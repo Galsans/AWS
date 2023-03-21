@@ -1,18 +1,20 @@
 const player = document.getElementById("player");
 
-// Player yang tidak dapat dideklarasikan ulang
+//variabel yang tidak dapat di deklrasikan ulang
 let playerLeft = 175;
-let playerBottom = 300;
+let playerBottom = 200;
 let gravity = 2;
 let isGameOver = false;
 
+//fungsi untuk lompat
 function jump() {
-  playerBottom += 30;
-  player.style.bottom = playerBottom + "px";
-  console.log(playerBottom);
+  if (playerBottom < 200) {
+    playerBottom += 30;
+    player.style.bottom = playerBottom + "px";
+    console.log(playerBottom);
+  }
 }
 
-// TOMBOL LONCAT/JUMP
 document.addEventListener("keydown", (KeyboardEvent) => {
   if (KeyboardEvent.code == "Space") {
     jump();
@@ -22,15 +24,12 @@ document.addEventListener("keydown", (KeyboardEvent) => {
 function fall() {
   if (playerBottom > 0) {
     playerBottom -= gravity;
-    playerBottom.style.bottom = playerBottom + "px";
+    player.style.bottom = playerBottom + "px";
   } else {
-    gameOver();
+    alert("game over");
   }
 }
 
 setInterval(fall, 20);
 
-function gameOver() {
-  isGameOver = true;
-  alert("Game Over!");
-}
+function border() {}
